@@ -2,6 +2,8 @@ import React from 'react';
 import { Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import './app.css'
+
 import { history } from '../helpers';
 import { alertActions } from '../actions';
 import { PrivateRoute } from '../components';
@@ -21,10 +23,17 @@ class App extends React.Component {
 
     render() {
         const { alert } = this.props;
-        let users = JSON.parse(localStorage.getItem('users')) || [];
         return (
             <div className="jumbotron">
                 <div className="container">
+
+                    <div className="navbar">
+                        <a className="navbar-brand" href="https://www.youvisit.com/">
+                            <img src="./src/assets/images/logo-dark.svg" alt="YouVisit" />
+                        </a>
+                    </div>
+
+
                     <div className="col-sm-8 col-sm-offset-2">
                         {alert.message &&
                             <div className={`alert ${alert.type}`}>{alert.message}</div>
@@ -44,6 +53,7 @@ class App extends React.Component {
 }
 
 function mapState(state) {
+
     const { alert } = state;
     return { alert };
 }
